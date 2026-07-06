@@ -1,0 +1,15 @@
+# Secrets
+.env
+
+# Data (large / not source-controlled)
+data/raw/
+data/lake/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Spark / Ivy
+extra-jars/
+*.log

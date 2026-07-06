@@ -1,0 +1,4 @@
+engine,query,median_seconds,mean_seconds,min_seconds,max_seconds
+Spark,Q1_TOP_MOVIES,0.7921,0.7823,0.6648,0.8958
+Spark,Q2_YEARLY_TREND,0.856,0.9467,0.6793,1.2122
+Spark,Q3_GENRE_ANALYSIS,2.7786,2.7272,2.0934,3.1181

@@ -1,0 +1,4 @@
+query,spark_seconds,clickhouse_seconds,speedup
+Q1_TOP_MOVIES,0.7921,0.0194,40.83
+Q2_YEARLY_TREND,0.856,0.0185,46.27
+Q3_GENRE_ANALYSIS,2.7786,0.1721,16.15
