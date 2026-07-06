@@ -4,19 +4,25 @@ import time
 
 import clickhouse_connect
 
+import os
+from dotenv import load_dotenv
 
-CLICKHOUSE_HOST = "localhost"
+load_dotenv()
 
-CLICKHOUSE_PORT = 8123
+
+
+CLICKHOUSE_HOST = os.environ["CLICKHOUSE_HOST"]
+CLICKHOUSE_HTTP_PORT = os.environ["CLICKHOUSE_HTTP_PORT"]
+CLICKHOUSE_USER = os.environ["CLICKHOUSE_USER"]
+CLICKHOUSE_PASSWORD = os.environ["CLICKHOUSE_PASSWORD"]
+WARMUP_RUNS = os.environ["WARMUP_RUNS"]
+MEASURED_RUNS = os.environ["MEASURED_RUNS"]
+
 
 RESULT_PATH = (
     "benchmark/results/"
     "clickhouse_results.csv"
 )
-
-WARMUP_RUNS = 1
-
-MEASURED_RUNS = 5
 
 
 # ------------------------------------------------------------
@@ -29,9 +35,9 @@ client = clickhouse_connect.get_client(
 
     port=CLICKHOUSE_PORT,
 
-    username="default",
+    username=CLICKHOUSE_USER,
 
-    password="my_secret_password",
+    password=CLICKHOUSE_PASSWORD,
 )
 
 
@@ -98,7 +104,7 @@ QUERIES = {
 
     """
     SELECT
-        genres as genre,
+        genre,
 
         count()
             AS title_count,
@@ -107,6 +113,8 @@ QUERIES = {
             AS avg_rating
 
     FROM imdb.title_analytics
+
+    ARRAY JOIN genres AS genre
 
     WHERE average_rating IS NOT NULL
 

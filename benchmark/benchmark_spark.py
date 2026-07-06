@@ -11,16 +11,20 @@ from pyspark.sql.functions import (
     sum as spark_sum
 )
 
+import os
+from dotenv import load_dotenv
 
-PARQUET_PATH = "/data/lake/imdb_curated"
+load_dotenv()
+
+
+PARQUET_PATH = os.environ["LAKE_PATH"]
+WARMUP_RUNS = os.environ["WARMUP_RUNS"]
+MEASURED_RUNS = os.environ["MEASURED_RUNS"]
 
 RESULT_PATH = (
     "/opt/spark/benchmark/results/"
     "spark_results.csv"
 )
-
-WARMUP_RUNS = 1
-MEASURED_RUNS = 5
 
 
 spark = (
