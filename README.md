@@ -317,7 +317,6 @@ GROUP BY genre ORDER BY title_count DESC;
 
 ## 13. Future Improvements
 
-- Enable **episode enrichment** (`title.episode.tsv`) for per-series episode analytics.
 - Add **incremental loads** (`ReplacingMergeTree` + watermark) instead of full reload.
 - Introduce an orchestrator (**Airflow / Dagster**) to schedule extract → transform → load.
 - Add **data tests** (Great Expectations / dbt) as a formal quality gate in CI.
